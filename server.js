@@ -15,17 +15,15 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.Promise = global.Promise;
-
+//connecting to heroku mLab
 mongoose
   .connect(
     process.env.MONGODB_URI ||
-      "mongodb://user1:password1@ds019976.mlab.com:19976/heroku_l9q6jn7c",
+      "mongodb://<user1>:<password1>@ds019976.mlab.com:19976/heroku_l9q6jn7c",
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useFindAndModify: false,
-      // useMongoClient: true,
     }
   )
   .then(() => console.log("DB Connected successfully!"))
